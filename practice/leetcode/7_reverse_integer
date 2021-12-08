@@ -1,0 +1,25 @@
+// https://leetcode-cn.com/problems/reverse-integer/
+class Solution {
+public:
+    int reverse(int x) {
+        if (x == 0) {
+            return x;
+        }
+        int sign = 1;
+        if (x < 0) {
+            sign = -1;
+        }
+        long ret = 0;
+        while (x != 0) {
+            ret = ret * 10 + sign * (x % 10);
+            x = x / 10;
+        }
+        ret = ret * sign;
+        int a = INT_MAX;
+        int b = INT_MIN;
+        if (ret > a || ret < b) {
+            return 0;
+        }
+        return ret;
+    }
+};
