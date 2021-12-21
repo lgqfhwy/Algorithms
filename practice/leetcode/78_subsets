@@ -1,0 +1,21 @@
+https://leetcode-cn.com/problems/subsets/
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ret;
+        vector<int> cur;
+        dfs(ret, nums, cur, 0, nums.size());
+        return ret;
+    }
+    void dfs(vector<vector<int>> &ret, vector<int>& nums, vector<int> &cur, int start, int end) {
+        if (start >= end) {
+            ret.push_back(cur);
+            return;
+        }
+        cur.push_back(nums[start]);
+        dfs(ret, nums, cur, start+1, end);
+        cur.pop_back();
+        dfs(ret, nums, cur, start+1, end);
+    }
+};
